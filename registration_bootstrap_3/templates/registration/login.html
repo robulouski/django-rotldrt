@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block title %}Sign in{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-10">
+	<h1>Sign in</h1>
+	<p>Not yet registered?  
+	  <a href="{% url 'registration_register' %}">Register now for free!</a></p>
+	<p>Trouble signing in?  
+	  <a href="{% url 'django.contrib.auth.views.password_reset' %}">Reset password.</a></p>
+  </div>
+  {% if form.errors %}
+  <div class="row">
+	<div class="alert alert-danger col-md-6">
+	  <p><strong>Login failed. Try again...</strong></p>
+	</div>
+  </div>
+
+  {% endif %}
+  <form action="{% url 'django.contrib.auth.views.login' %}" 
+	  method="post" 
+	  role="form" 
+	  class="form-horizontal">
+	{% csrf_token %}
+
+	{% bootstrap_field form.username layout='horizontal' %}
+	{% bootstrap_field form.password layout='horizontal' %}
+    {% if next %}
+      <input type="hidden" name="next" value="{{ next }}" />
+	{% else %}
+      <input type="hidden" name="next" value="{% url 'mainapp.views.home' %}" />
+    {% endif %}
+	{% buttons %}
+	<div class="col-sm-offset-2 col-sm-10">
+	  <button type="submit" class="btn btn-primary">
+		{% bootstrap_icon "star" %} Login
+	  </button>
+	</div>
+	{% endbuttons %}
+  </form>
+</div>
+{% endblock %}

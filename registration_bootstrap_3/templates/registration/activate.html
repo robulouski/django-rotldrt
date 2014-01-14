@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %}Account activation error{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+	<h1>Account activation error</h1>
+	<div class="alert alert-danger col-md-9">
+	  <p>The activation key <strong>{{ activation_key }}</strong> is invalid or expired.</p>
+	</div>
+  </div>
+</div>
+
+{% endblock %}
+	

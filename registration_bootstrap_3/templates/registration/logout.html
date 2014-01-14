@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Logout</h1>
+  <p class="lead">You are now logged out.</p>
+  <p><a href="{% url 'mainapp.views.home' %}">Home</a></p>
+</div>
+{% endblock %}

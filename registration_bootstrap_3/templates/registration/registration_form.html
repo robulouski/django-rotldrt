@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block subtitle %}Registration{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-10">
+	<h1>Sign up</h1>
+	<p>Already registered?  
+	  <a href="{% url 'django.contrib.auth.views.login' %}">Sign in here.</a></p>
+	<!--<small>All fields are required.</small>-->
+  </div>
+  <form action="{% url 'registration_register' %}" method="post" role="form" class="form-horizontal">
+	{% csrf_token %}
+	{% bootstrap_form form layout='horizontal' %}
+
+	{% buttons %}
+	<div class="col-sm-offset-2 col-sm-10">
+	  <button type="submit" class="btn btn-primary">
+		{% bootstrap_icon "star" %} Sign Me Up!
+	  </button>
+	</div>
+	{% endbuttons %}
+  </form>
+</div>
+{% endblock %}
