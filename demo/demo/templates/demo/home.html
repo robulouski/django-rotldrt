@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block title %}DEMO{% endblock %}
+{% block nav_user %}
+  {% if user.is_authenticated %}
+    <ul class="nav navbar-nav navbar-right">
+      <li id="nav-username"><a href="{% url 'demo.views.profile' %}">
+        <span class="glyphicon glyphicon-user"></span>  {{ user.get_username }} &nbsp; </a>
+      </li>
+      <li>
+        <a href="{% url 'django.contrib.auth.views.logout' %}">Sign out</a>
+      </li>
+    </ul>
+  {% else %}
+    <form class="navbar-form navbar-right" 
+          method="post" 
+          action="{% url 'django.contrib.auth.views.login' %}">
+      {% csrf_token %}
+      {% bootstrap_field form.username show_label=False %}
+      {% bootstrap_field form.password show_label=False %}
+      <input type="hidden" name="next" value="{% url 'demo.views.home' %}" />
+      <button type="submit" class="btn btn-success">Sign in</button>
+    </form>
+  {% endif %}
+{% endblock %}
+{% block content %}
+	<div class="container">
+      <div class="jumbotron">
+		<div class="container">
+          <h1>DEMO</h1>
+          <p class="lead">django-registration demo using Bootstrap 3</p>
+		  {% if not user.is_authenticated %}
+            <p><a class="btn btn-lg btn-primary" 
+				  href="{% url 'registration_register' %}">Register</a> 
+			  &nbsp;
+              <a class="btn btn-lg btn-success" 
+				  href="{% url 'django.contrib.auth.views.login' %}">Sign in</a>
+            </p>
+		  {% endif %}
+		</div> <!-- /.container -->
+	  </div> <!-- /.jumbotron -->
+    </div> <!-- /.container -->
+{% endblock content %}
