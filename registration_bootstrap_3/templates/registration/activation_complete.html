@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
-
 {% block title %}Account activation complete{% endblock %}
 
 {% block content %}
 <div class="container"> 
   <h1>Success!</h1>
-  <p class="lead">Your account has been successfully activated.</p>
+  <p class="lead">Account successfully activated!</p>
   <p>You can now sign in to the website.</p>
 
   <p><a href="{% url 'django.contrib.auth.views.login' %}" 

@@ -31,7 +31,7 @@
     {% if next %}
       <input type="hidden" name="next" value="{{ next }}" />
 	{% else %}
-      <input type="hidden" name="next" value="{% url 'mainapp.views.home' %}" />
+      <input type="hidden" name="next" value="{% url 'home' %}" />
     {% endif %}
 	{% buttons %}
 	<div class="col-sm-offset-2 col-sm-10">
