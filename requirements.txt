@@ -1,0 +1,6 @@
+Django==1.6.1
+argparse==1.2.1
+distribute==0.6.24
+django-bootstrap3==2.5.5
+django-registration==1.0
+wsgiref==0.1.2
