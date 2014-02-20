@@ -11,4 +11,4 @@ def home(request):
 
 @login_required
 def profile(request):
-    return login(request, template_name='demo/profile.html')
+    return render(request, template_name='demo/profile.html')
